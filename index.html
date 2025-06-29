@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swift Hire - تواصل مع أفضل الحرفيين</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #4cc9f0;
+            --border: #dee2e6;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Poppins', sans-serif;
+            background-color: #fafafa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* اللغة العربية */
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* اللغة الإنجليزية */
+        body[dir="ltr"] {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* تنسيقات مشتركة */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 17px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .language-switcher {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* الصفحة الرئيسية */
+        .hero {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            opacity: 0.1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        /* كيف تعمل */
+        .how-it-works {
+            background-color: white;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .step-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            color: var(--gray);
+            font-size: 16px;
+        }
+
+        /* طرق الدفع المضافة */
+        .payment-methods {
+            background-color: #f8f9fa;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .payment-card {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+        }
+
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+        }
+
+        .payment-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .payment-desc {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .payment-notes {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-notes h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .payment-notes ol {
+            padding-right: 20px;
+        }
+
+        .payment-notes li {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            padding-right: 15px;
+            position: relative;
+        }
+
+        .payment-notes li::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05), rgba(76, 201, 240, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* انضم إلينا */
+        .join-us {
+            background-color: white;
+        }
+
+        .join-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .join-image {
+            flex: 1;
+        }
+
+        .join-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .join-content {
+            flex: 1;
+        }
+
+        .join-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .join-desc {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .benefits {
+            margin-bottom: 30px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .benefit-icon {
+            color: var(--primary);
+            font-size: 20px;
+            min-width: 24px;
+        }
+
+        /* تواصل معنا */
+        .contact {
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            color: white;
+        }
+
+        .contact .section-title,
+        .contact .section-subtitle {
+            color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-title {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info-box {
+            flex: 1;
+        }
+
+        .info-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 20px;
+            color: white;
+            min-width: 24px;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        /* التذييل */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .footer-desc {
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 14px;
+        }
+
+        /* قسم من نحن */
+        .about-us {
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .about-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-content h2 {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+
+        /* قسم الرؤية والرسالة */
+        .vision-mission {
+            background: linear-gradient(135deg, var(--primary), var(--success));
+            color: white;
+            position: relative;
+        }
+        
+        .vision-mission .section-title {
+            color: white;
+        }
+        
+        .vision-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .vision-card, .mission-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .vision-card:hover, .mission-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .vision-card h3, .mission-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .vision-card h3 i, .mission-card h3 i {
+            font-size: 28px;
+        }
+        
+        .vision-card p, .mission-card p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .join-container {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .steps, .payment-options, .vision-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .about-content {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-buttons {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- شريط المعلومات العلوي -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <a href="tel:+967738279822">
+                    <i class="fas fa-phone"></i> +967738279822
+                </a>
+                <a href="mailto:swifthireye@gmail.com">
+                    <i class="fas fa-envelope"></i> swifthireye@gmail.com
+                </a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <div class="logo-img">SH</div>
+                Swift Hire
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#how-it-works">كيف تعمل</a></li>
+                <li><a href="#about-us">من نحن</a></li>
+                <li><a href="#vision-mission">الرؤية والرسالة</a></li>
+                <li><a href="#payment">طرق الدفع</a></li>
+                <li><a href="#join">انضم إلينا</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <button class="language-switcher" id="languageToggle">
+                    <i class="fas fa-globe"></i> English
+                </button>
+                <a href="#" class="btn">تسجيل الدخول</a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">تواصل مع أفضل <span>الحرفيين</span> في منطقتك</h1>
+                <p class="hero-subtitle">
+                    منصة Swift Hire توفر لك أفضل الحرفيين وأصحاب المهن المحترفين لجميع احتياجاتك المنزلية والمهنية. تواصل مباشرة، اطلب خدمة، وادفع بسهولة وأمان.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#join" class="btn">انضم كحرفي</a>
+                    <a href="#payment" class="btn btn-outline">اكتشف طرق الدفع</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="حرفيون محترفون" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- كيف تعمل المنصة -->
+    <section class="section how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">كيف تعمل المنصة</h2>
+            <p class="section-subtitle">
+                نوفر لك تجربة سهلة وسريعة للوصول لأفضل الحرفيين المحترفين في منطقتك
+            </p>
+            
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="step-title">ابحث عن حرفي</h3>
+                    <p class="step-desc">
+                        ابحث عن الحرفي المناسب حسب الخدمة، الموقع، التقييمات والسعر
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">تواصل مباشر</h3>
+                    <p class="step-desc">
+                        تواصل مباشرة مع الحرفي عبر المنصة لمناقشة تفاصيل الخدمة
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="step-title">حدد موعد</h3>
+                    <p class="step-desc">
+                        حدد الموعد المناسب لك وتأكد من توفر الحرفي في هذا الموعد
+                    </p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="step-title">ادفع بسهولة</h3>
+                    <p class="step-desc">
+                        اختر طريقة الدفع المناسبة لك من بين خيارين متاحين
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من نحن -->
+    <section class="section about-us" id="about-us">
+        <div class="container">
+            <div class="about-content">
+                <h2>من نحن</h2>
+                <p>
+                    تعد Swift Hire منصة رقمية خدمية تهدف إلى تسهيل عملية توظيف الحرفيين وأصحاب المهن ذوي الخبرة والكفاءة في شتى المجالات، من خلال ربط مباشر وموثوق بين العملاء والمهنيين المؤهلين. ندرك التحديات التي يواجهها الأفراد والمؤسسات في العثور على خبراء مهرة وموثوقين في مجالات مثل (الكهرباء - النجارة - السباكة - اللحام ... وغيرها)، لذا تقدم Swift Hire حلا عصريا وسريعا يضمن جودة الخدمة وسهولة الوصول، عبر شبكة من العمال المحترفين المدققين ونماذج دفع مرنة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الرؤية والرسالة -->
+    <section class="section vision-mission" id="vision-mission">
+        <div class="container">
+            <h2 class="section-title">رؤيتنا ورسالتنا</h2>
+            
+            <div class="vision-container">
+                <div class="vision-card">
+                    <h3><i class="fas fa-eye"></i> الرؤية</h3>
+                    <p>
+                        أن تكون منصة Swift Hire المنصة الأولى في اليمن لربط العملاء بالحرفيين وأصحاب المهن ذوي الخبرة والكفاءة من خلال خدمة رقمية موثوقة، سريعة، واحترافية
+                    </p>
+                </div>
+                
+                <div class="mission-card">
+                    <h3><i class="fas fa-bullseye"></i> الرسالة</h3>
+                    <p>
+                        تمكين العملاء من الوصول بسهولة إلى خدمات مهنية عالية الجودة عبر منصة رقمية توفر شبكة من الحرفيين الموثوقين وتدعم فرص العمل لأصحاب المهن الحرة في بيئة منظمة وعادلة.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- طرق الدفع -->
+    <section class="section payment-methods" id="payment">
+        <div class="container">
+            <h2 class="section-title">طرق الدفع</h2>
+            <p class="section-subtitle">
+                اختر النموذج الذي يناسب احتياجاتك من بين خيارين متاحين
+            </p>
+            
+            <div class="payment-options">
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="payment-title">نموذج الخدمة الكاملة</h3>
+                    <p class="payment-desc">
+                        تتفق المنصة مع العميل على تقديم وإدارة الخدمة كاملة، وتدير عملية الدفع بين العميل والعامل بمقابل عمولة بحسب الاتفاق.
+                    </p>
+                    <div class="highlight-box">
+                        <i class="fas fa-info-circle"></i> نضمن لك جودة الخدمة من البداية حتى النهاية
+                    </div>
+                </div>
+                
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="payment-title">نموذج الإحالة</h3>
+                    <p class="payment-desc">
+                        يدفع العميل للمنصة رسوم رمزية ثابتة مقابل توصيله بالأيادي العاملة المناسبة، ويتفق مع العامل على تكاليف الخدمة بشكل مباشر.
+                    </p>
+                    <div class="highlight-box">
+                        <i class="fas fa-info-circle"></i> حل مثالي للخدمات البسيطة والمباشرة
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- انضم إلينا -->
+    <section class="section join-us" id="join">
+        <div class="container join-container">
+            <div class="join-image">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="انضم إلى منصة Swift Hire" class="join-img">
+            </div>
+            
+            <div class="join-content">
+                <h2 class="join-title">انضم إلى منصة Swift Hire</h2>
+                <p class="join-desc">
+                    سواء كنت حرفي محترف أو صاحب مهنة متميزة، انضم إلى منصتنا ووسع دائرة عملائك، واحصل على فرص جديدة.
+                </p>
+                
+                <div class="benefits">
+                    <div class="benefit">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>وسع قاعدة عملائك</h3>
+                            <p>الوصول إلى آلاف العملاء الباحثين عن خدماتك</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>ادفع آمن وسهل</h3>
+                            <p>استلم مستحقاتك بسهولة وأمان عبر منصتنا</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>ادارة مواعيدك</h3>
+                            <p>نظام متكامل لإدارة مواعيدك وطلبات العملاء</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit">
+                        <div class="benefit-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>طرق دفع مرنة</h3>
+                            <p>اختر بين نموذج الخدمة الكاملة أو نموذج الإحالة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn btn-secondary">سجل كحرفي الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- تواصل معنا -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل معنا</h2>
+            <p class="section-subtitle">
+                لديك استفسار أو اقتراح؟ نحن هنا لمساعدتك على مدار الساعة
+            </p>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3 class="form-title">أرسل رسالة</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="الاسم الكامل">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="البريد الإلكتروني">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="رقم الجوال">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>سبب التواصل</option>
+                                <option>استفسار عام</option>
+                                <option>دعم فني</option>
+                                <option>اقتراحات</option>
+                                <option>شكوى</option>
+                                <option>استفسار عن طرق الدفع</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="رسالتك..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">إرسال الرسالة</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-box">
+                    <h3 class="info-title">معلومات التواصل</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>العنوان</h4>
+                                <p>صنعاء - اليمن</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>الهاتف</h4>
+                                <p>+967738279822</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>البريد الإلكتروني</h4>
+                                <p>swifthireye@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">
+                        <div class="logo-img">SH</div>
+                        Swift Hire
+                    </a>
+                    <p class="footer-desc">
+                        منصة Swift Hire توفر حلولاً متكاملة للتواصل بين العملاء والحرفيين المحترفين، مع توفير تجربة سهلة وآمنة للجميع.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="#how-it-works"><i class="fas fa-chevron-left"></i> كيف تعمل</a></li>
+                        <li><a href="#about-us"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="#vision-mission"><i class="fas fa-chevron-left"></i> الرؤية والرسالة</a></li>
+                        <li><a href="#payment"><i class="fas fa-chevron-left"></i> طرق الدفع</a></li>
+                        <li><a href="#join"><i class="fas fa-chevron-left"></i> انضم إلينا</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> كهربائي منازل</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> سباكة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> نجارة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> دهانات وديكور</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> تكييف وتبريد</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">طرق الدفع</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> نموذج الخدمة الكاملة</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-left"></i> نموذج الإحالة</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2023 Swift Hire. جميع الحقوق محفوظة. صمم بحب لتوصيل العملاء بأفضل الحرفيين.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تبديل اللغة
+        const languageToggle = document.getElementById('languageToggle');
+        const htmlElement = document.documentElement;
+        
+        languageToggle.addEventListener('click', function() {
+            if (htmlElement.getAttribute('dir') === 'rtl') {
+                htmlElement.setAttribute('dir', 'ltr');
+                htmlElement.setAttribute('lang', 'en');
+                languageToggle.innerHTML = '<i class="fas fa-globe"></i> العربية';
+            } else {
+                htmlElement.setAttribute('dir', 'rtl');
+                htmlElement.setAttribute('lang', 'ar');
+                languageToggle.innerHTML = '<i class="fas fa-globe"></i> English';
+            }
+        });
+        
+        // التنقل الناعم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // إغلاق القائمة المتنقلة إذا كانت مفتوحة
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // تغيير لون شريط التنقل عند التمرير
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = 'white';
+                navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+            }
+        });
+        
+        // القائمة المتنقلة
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+             if (!navLinks.contains(event.target)) {
+                 if (!mobileMenuBtn.contains(event.target)) {
+                     navLinks.classList.remove('active');
+                 }
+            }
+        });
+
+        
+        // تسليط الضوء على القسم النشط أثناء التمرير
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
